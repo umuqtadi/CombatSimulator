@@ -12,6 +12,7 @@ namespace ConsoleApplication1
         static int dragonHP = 200;
         static Random rng = new Random();
         static string userChoice = string.Empty;
+        static bool gameOn = true;
 
         static void Main(string[] args)
         {
@@ -32,22 +33,36 @@ namespace ConsoleApplication1
         {
             userChoice = Console.ReadLine();
 
-            if (userChoice == "1")
-            {
-                dragonHP = dragonHP - (rng.Next(20,36));
-            }
-            if (userChoice == "2")
-            {
-                dragonHP = dragonHP - (rng.Next(10, 16));
-            }
-            if (userChoice == "3")
-            {
-                playerHP = playerHP + (rng.Next(10, 21));
-            }
+                if (userChoice == "1")
+                {
+                    dragonHP = dragonHP - (rng.Next(20, 36));
+                    Console.WriteLine("The dragon now has {0} hp.", dragonHP);
+                    
+                }
+
+                else if (userChoice == "2")
+                {
+                    dragonHP = dragonHP - (rng.Next(10, 16));
+                    Console.WriteLine("The dragon has {0} hp.", dragonHP);
+                }
+                else if (userChoice == "3")
+                {
+                    playerHP = playerHP + (rng.Next(10, 21));
+                    Console.WriteLine("The dragon has {0} hp", dragonHP);
+                }
+                else
+                {
+                    Console.WriteLine("Please enter a valid input, idiot.");
+                    Console.WriteLine("You now have {0} hp", playerHP);
+                }
         }
         static void DragonAttack()
         {
-            playerHP = playerHP - rng.Next(5, 16);
+            if ("123".Contains(userChoice))
+            {
+                playerHP = playerHP - rng.Next(5, 16);
+                Console.WriteLine("You now have {0} hp", playerHP);
+            }
         }
         static void WinOrLose()
         {
